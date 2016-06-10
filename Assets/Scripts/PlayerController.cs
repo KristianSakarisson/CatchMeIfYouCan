@@ -3,18 +3,18 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    float moveConstant = .2f;
+    public float moveConstant = 70f;
 
-	void Start ()
+    void Start()
     {
-	
-	}
-	
-	void FixedUpdate ()
+
+    }
+
+    void FixedUpdate()
     {
         float verticalMove = Input.GetAxis("Vertical") * moveConstant;
         float horizontalMove = Input.GetAxis("Horizontal") * moveConstant;
 
-        transform.Translate(horizontalMove, verticalMove, 0);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalMove, verticalMove));
 	}
 }
