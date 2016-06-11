@@ -5,8 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     public float moveConstant = 70f;
 
-    void FixedUpdate()
-    {
+	void FixedUpdate() 
+	{
         float verticalMove = Input.GetAxis("Vertical") * moveConstant;
         float horizontalMove = Input.GetAxis("Horizontal") * moveConstant;
 
