@@ -9,10 +9,8 @@ public class CameraController : MonoBehaviour
 	public float zoomSizeMin = 1;
 	public float zoomSizeMax = 4;
 
-	public float duration = 3.0f;
-	private float elapsed = 0.0f;
-
-	protected float zoom = 0.1f;
+	public float duration = 2.0f;
+	public float zoom = 0.8f;
 
     void Start()
     {
@@ -22,13 +20,13 @@ public class CameraController : MonoBehaviour
 	
 	void Update ()
     { 
-		if (Input.GetAxis("Mouse ScrollWheel") > 0) { //Zooma út
+		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
 			zoomOut();
 		}
-		if (Input.GetAxis ("Mouse ScrollWheel") < 0) { //Zooma inn
+		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
 			zoomIn();
 		}
-		Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, zoomSizeMin, zoomSizeMax );
+
 		Camera.main.transform.position = player.transform.position + differenceZaxis;
 	}
 
@@ -39,14 +37,11 @@ public class CameraController : MonoBehaviour
 
 	public void zoomOut() 
 	{
-		Debug.Log("Zooming out");
-		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Mathf.Clamp(Camera.main.orthographicSize+zoom, zoomSizeMin, zoomSizeMax), duration);
+		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Mathf.Clamp(Camera.main.orthographicSize+zoom, zoomSizeMin, zoomSizeMax), Time.deltaTime / duration);
 	}
 	public void zoomIn() 
 	{
-		Debug.Log("Zooming in");
-		Camera.main.orthographicSize--;
-		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Mathf.Clamp(Camera.main.orthographicSize-zoom, zoomSizeMin, zoomSizeMax), duration);
+		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Mathf.Clamp(Camera.main.orthographicSize-zoom, zoomSizeMin, zoomSizeMax), Time.deltaTime / duration);
 	}
 	public void canZoom() 
 	{
