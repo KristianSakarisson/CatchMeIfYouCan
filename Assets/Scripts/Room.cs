@@ -111,7 +111,9 @@ public class Room : MonoBehaviour
 
     public void DrawTile()
     {
-        Instantiate(statistics.tiles[Random.Range(0, statistics.tiles.Length)], realPosition + zAdjust, Quaternion.identity);
+        GameObject newTile = Instantiate(statistics.tiles[Random.Range(0, statistics.tiles.Length)], realPosition + zAdjust, Quaternion.identity) as GameObject;
+
+        newTile.transform.parent = transform;
     }
 
     public void SetSide(GameObject input)

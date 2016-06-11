@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 427208}
   - 114: {fileID: 11495098}
   - 114: {fileID: 11429642}
-  - 114: {fileID: 11489760}
+  - 114: {fileID: 11474668}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -42,12 +42,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea8d52efa8194a45bc08d35c3cb3d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  cam: {fileID: 0}
   currentOrtho: 0
   zoom: 1
   smooth: 1
   minOrtho: 1
   maxOrtho: 6
---- !u!114 &11489760
+--- !u!114 &11474668
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -55,7 +57,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 145722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57d7860e143e08f43aa934f4cd698dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5986b85bb75501649b2f21d9310c71e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
