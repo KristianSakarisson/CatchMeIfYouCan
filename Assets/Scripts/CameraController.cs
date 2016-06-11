@@ -3,8 +3,10 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-    GameObject player;
+    public GameObject player;
     Vector3 differenceZaxis;
+
+	public Camera cam = null;
 
 	public float currentOrtho; // Value of most current Camera.main.orthographicSize
 
@@ -15,7 +17,8 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-		currentOrtho = Camera.main.orthographicSize;
+		currentOrtho = cam.orthographicSize;
+
         //differenceZaxis = new Vector3(0, 0, Camera.main.transform.position.z - player.transform.position.z);
     }
 	
@@ -30,18 +33,18 @@ public class CameraController : MonoBehaviour
 			}
 
 			ZoomView ();
-			Camera.main.transform.position = player.transform.position + differenceZaxis;
+			cam.transform.position = player.transform.position + Vector3.back;
 		}
 	}
 
-    public void SetPlayer(GameObject input)
+    /*public void SetPlayer(GameObject input)
     {
         player = input;
-    }
+    }*/
 
 	public void ZoomView()
 	{
-		Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, currentOrtho, smooth * Time.deltaTime);
+		cam.orthographicSize = Mathf.Lerp (cam.orthographicSize, currentOrtho, smooth * Time.deltaTime);
 	}
 		
 }
