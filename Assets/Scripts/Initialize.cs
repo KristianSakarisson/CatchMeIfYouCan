@@ -7,9 +7,11 @@ public class Initialize : MonoBehaviour
     public GameObject[] roomOutlines;
     public GameObject player;
     private int[] rotations = new int[] { 0, 90, 180, 270 };
+    private Statistics statistics;
 
 	void Awake ()
     {
+        statistics = GetComponent<Statistics>();
         int[] spawnPosition = new int[] {Random.Range(0, mapSize), Random.Range(0, mapSize) };
         GameObject parent = new GameObject("rooms");
         for (int i = 0; i < mapSize; i++)
@@ -22,6 +24,8 @@ public class Initialize : MonoBehaviour
                 newRoom.transform.Rotate(new Vector3(0, 0, rotations[Random.Range(0, rotations.Length)]));
 
                 newRoom.transform.parent = parent.transform;
+
+                statistics.AddRoom(newRoom, i, j);
 
                 if(spawnPosition[0] == i && spawnPosition[1] == j)
                 {
