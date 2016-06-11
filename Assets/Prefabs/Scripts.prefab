@@ -65,13 +65,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: 8
-  roomOutlines:
-  - {fileID: 121110, guid: 6dc8d1e50cc206442954a35b8b90fd28, type: 2}
-  - {fileID: 166040, guid: 8152ab5d283dca54f939204ed9cadefe, type: 2}
-  - {fileID: 146570, guid: 77ab86dfd052b5646aeaacc8ff9fde62, type: 2}
   player: {fileID: 153892, guid: ac1608376d1d72148b54a64f1e9fb524, type: 2}
-  door: {fileID: 157258, guid: 89873a15469ed544286a96b8e8e71506, type: 2}
-  wall: {fileID: 129808, guid: 09337355cd875a949805b62cc2868302, type: 2}
+  side: {fileID: 126058, guid: 07be341d399c2f245957aa954f73b694, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
