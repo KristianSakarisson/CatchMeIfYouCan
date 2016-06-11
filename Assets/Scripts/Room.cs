@@ -3,10 +3,11 @@ using System.Collections;
 
 public class Room : MonoBehaviour
 {
-    private GameObject door;
-    private GameObject wall;
+    private GameObject side;
 
     private Vector3 realPosition;
+
+    private Statistics statistics;
 
     public int xPos;
     public int yPos;
@@ -28,8 +29,26 @@ public class Room : MonoBehaviour
     public GameObject[] sidePrefabs = new GameObject[4];
     public Type type;
 
+    public Room[] GetNeighbors()
+    {
+        Room[] neighbors = new Room[4];
+
+        if (xPos != statistics.GetSize() - 1)
+            neighbors[0] = statistics.GetRoom(xPos + 1, yPos);
+        if (yPos != statistics.GetSize() - 1)
+            neighbors[1] = statistics.GetRoom(xPos, yPos + 1);
+        if (xPos != 0)
+            neighbors[2] = statistics.GetRoom(xPos - 1, yPos);
+        if (yPos != 0)
+            neighbors[3] = statistics.GetRoom(xPos, yPos - 1);
+
+        return neighbors;
+    }
+
     public void GenerateRoom(int x, int y)
     {
+        statistics = GameObject.Find("Scripts").GetComponent<Statistics>();
+
         xPos = x;
         yPos = y;
 
@@ -59,26 +78,37 @@ public class Room : MonoBehaviour
 
             spawnVector += spawnOffsets[i] * 1.5f / 2f;
 
-            if (sides[i] == Side.door)
-                newSide = Instantiate(door, spawnVector, Quaternion.identity) as GameObject;
-            else
-                newSide = Instantiate(wall, spawnVector, Quaternion.identity) as GameObject;
+            newSide = Instantiate(side, spawnVector, Quaternion.identity) as GameObject;
 
             sidePrefabs[i] = newSide;
 
             newSide.transform.Rotate(new Vector3(0, 0, spawnRotations[i % spawnRotations.Length]));
             newSide.transform.parent = transform;
         }
+
+        DrawSides();
     }
 
-    public void SetDoor(GameObject input)
+    public void DrawSides()
     {
-        door = input;
+        for (int i = 0; i < sidePrefabs.Length; i++)
+        {
+            if (sides[i] == Side.door)
+            {
+                sidePrefabs[i].transform.GetChild(0).gameObject.SetActive(true);
+                sidePrefabs[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            else
+            {
+                sidePrefabs[i].transform.GetChild(0).gameObject.SetActive(false);
+                sidePrefabs[i].transform.GetChild(1).gameObject.SetActive(true);
+            }
+        }
     }
-    
-    public void SetWall(GameObject input)
+
+    public void SetSide(GameObject input)
     {
-        wall = input;
+        side = input;
     }
 
     public Vector3 GetPosition()

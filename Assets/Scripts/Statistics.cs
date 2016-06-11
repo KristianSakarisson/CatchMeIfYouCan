@@ -4,9 +4,11 @@ using System.Collections;
 public class Statistics : MonoBehaviour
 {
     private Room[,] rooms;
+    private int mapSize;
 
     public void SetSize(int size)
     {
+        mapSize = size;
         rooms = new Room[size, size];
     }
 
@@ -18,5 +20,10 @@ public class Statistics : MonoBehaviour
     public Room GetRoom(int x, int y)
     {
         return rooms[x, y];
+    }
+
+    public int GetSize()
+    {
+        return mapSize;
     }
 }
