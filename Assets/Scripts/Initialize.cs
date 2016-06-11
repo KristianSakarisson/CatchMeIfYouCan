@@ -62,12 +62,12 @@ public class Initialize : NetworkBehaviour
             for (int y = 0; y < mapSize; y++)
             {
                 Room thisRoom = statistics.GetRoom(x, y);
-                
-                if(x == 0)
+
+                if (x == 0)
                 {
                     thisRoom.sides[3] = Room.Side.wall;
                 }
-                if(x == mapSize - 1)
+                if (x == mapSize - 1)
                 {
                     thisRoom.sides[1] = Room.Side.wall;
                 }
@@ -92,6 +92,22 @@ public class Initialize : NetworkBehaviour
                     thisRoom.sides[1] = rightNeighbor.sides[3];
 
                 thisRoom.DrawSides();
+            }
+        }
+
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                for (int i = 0; i < statistics.GetRoom(x, y).sides.Length; i++)
+                {
+                    if (statistics.GetRoom(x, y).sides[i] == Room.Side.door)
+                        continue;
+                    if (i == statistics.GetRoom(x, y).sides.Length - 1)
+                        statistics.GetRoom(x, y).sides[Random.Range(0, statistics.GetRoom(x, y).sides.Length)] = Room.Side.door;
+
+                    statistics.GetRoom(x, y).DrawSides();
+                }
             }
         }
     }

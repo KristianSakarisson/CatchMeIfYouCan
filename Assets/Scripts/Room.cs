@@ -89,7 +89,7 @@ public class Room : MonoBehaviour
         }
 
         DrawSides();
-        DrawTile();
+        //DrawTile();
     }
 
     public void DrawSides()
