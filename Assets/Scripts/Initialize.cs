@@ -55,8 +55,66 @@ public class Initialize : NetworkBehaviour
         FixRooms();
     }
 
+    void AddDoorToFirst()
+    {
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                Room thisRoom = statistics.GetRoom(x, y);
+                for (int i = 0; i < thisRoom.sides.Length; i++)
+                {
+                    if (thisRoom.sides[i] == Room.Side.door)
+                        continue;
+                    if (i == thisRoom.sides.Length - 1)
+                    {
+                        thisRoom.sides[Random.Range(0, thisRoom.sides.Length)] = Room.Side.door;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    bool AllRoomsHaveDoors()
+    {
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                Room thisRoom = statistics.GetRoom(x, y);
+                for (int i = 0; i < thisRoom.sides.Length; i++)
+                {
+                    if (thisRoom.sides[i] == Room.Side.door)
+                        continue;
+                    if (i == thisRoom.sides.Length - 1)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    void DrawAllRooms()
+    {
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                Room thisRoom = statistics.GetRoom(x, y);
+
+                thisRoom.DrawSides();
+            }
+        }
+    }
+
     void FixRooms()
     {
+        while (!AllRoomsHaveDoors())
+            AddDoorToFirst();
+
         for (int x = 0; x < mapSize; x++)
         {
             for (int y = 0; y < mapSize; y++)
@@ -79,35 +137,28 @@ public class Initialize : NetworkBehaviour
                 {
                     thisRoom.sides[0] = Room.Side.wall;
                 }
+            }
+        }
+        ConnectDoors();
+        DrawAllRooms();
+    }
+
+    void ConnectDoors()
+    {
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                Room thisRoom = statistics.GetRoom(x, y);
 
                 Room topNeighbor = thisRoom.GetNeighbors()[1];
                 Room rightNeighbor = thisRoom.GetNeighbors()[0];
-                Room bottomNeighbor = thisRoom.GetNeighbors()[2];
-                Room leftNeighbor = thisRoom.GetNeighbors()[3];
 
                 if (topNeighbor != null)
                     thisRoom.sides[0] = topNeighbor.sides[2];
 
                 if (rightNeighbor != null)
                     thisRoom.sides[1] = rightNeighbor.sides[3];
-
-                thisRoom.DrawSides();
-            }
-        }
-
-        for (int x = 0; x < mapSize; x++)
-        {
-            for (int y = 0; y < mapSize; y++)
-            {
-                for (int i = 0; i < statistics.GetRoom(x, y).sides.Length; i++)
-                {
-                    if (statistics.GetRoom(x, y).sides[i] == Room.Side.door)
-                        continue;
-                    if (i == statistics.GetRoom(x, y).sides.Length - 1)
-                        statistics.GetRoom(x, y).sides[Random.Range(0, statistics.GetRoom(x, y).sides.Length)] = Room.Side.door;
-
-                    statistics.GetRoom(x, y).DrawSides();
-                }
             }
         }
     }
