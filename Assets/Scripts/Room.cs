@@ -88,6 +88,11 @@ public class Room : MonoBehaviour
             newSide.transform.parent = transform;
         }
 
+        BoxCollider2D coll = gameObject.AddComponent<BoxCollider2D>();
+        Vector2 colliderSize = new Vector2(1.48f, 1.48f);
+        coll.size = colliderSize;
+        coll.isTrigger = true;
+
         DrawSides();
         DrawTile();
     }
