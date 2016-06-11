@@ -188,7 +188,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1001 &593395876
+--- !u!1001 &477919629
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -197,11 +197,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 427208, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.940487
+      value: -1.94048703
       objectReference: {fileID: 0}
     - target: {fileID: 427208, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.47706044
+      value: -.477060437
       objectReference: {fileID: 0}
     - target: {fileID: 427208, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -225,64 +225,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 427208, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11495098, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
-      propertyPath: mapSize
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 11495098, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
-      propertyPath: roomOutlines.Array.data[0]
-      value: 
-      objectReference: {fileID: 121110, guid: 6dc8d1e50cc206442954a35b8b90fd28, type: 2}
-    - target: {fileID: 11495098, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
-      propertyPath: roomOutlines.Array.data[1]
-      value: 
-      objectReference: {fileID: 166040, guid: 8152ab5d283dca54f939204ed9cadefe, type: 2}
-    - target: {fileID: 11495098, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
-      propertyPath: roomOutlines.Array.data[2]
-      value: 
-      objectReference: {fileID: 146570, guid: 77ab86dfd052b5646aeaacc8ff9fde62, type: 2}
-    - target: {fileID: 11429642, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
-      propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1344186939 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 145722, guid: fa49238fe9d2963409c91d73d112d78d, type: 2}
-  m_PrefabInternal: {fileID: 593395876}
---- !u!114 &1344186940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1344186939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 250
-    i1: 73
-    i2: 35
-    i3: 143
-    i4: 233
-    i5: 210
-    i6: 150
-    i7: 52
-    i8: 9
-    i9: 201
-    i10: 29
-    i11: 115
-    i12: 209
-    i13: 18
-    i14: 215
-    i15: 141
-  m_ServerOnly: 1
-  m_LocalPlayerAuthority: 0

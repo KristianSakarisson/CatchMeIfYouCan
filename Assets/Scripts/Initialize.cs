@@ -101,12 +101,12 @@ public class Initialize : NetworkBehaviour
 	}
 
 	public override void OnStartServer() {
-		Debug.LogError ("Server start!");
+		Debug.Log ("Server start!");
 	}
 	public override void OnStartClient() {
-		Debug.LogError ("Client start!");
+		Debug.Log ("Client start!");
 	}
 	public override void OnStartLocalPlayer() {
-		Debug.LogError ("LocalPlayer start!");
+		Debug.Log ("LocalPlayer start!");
 	}
 }
