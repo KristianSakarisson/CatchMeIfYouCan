@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 491560}
   - 212: {fileID: 21287032}
+  - 60: {fileID: 6093696}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -23,12 +24,34 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.98325, y: 34.125397, z: 0}
+  m_LocalPosition: {x: 2.0481555, y: 7.873956, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!60 &6093696
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157258}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -0.22910166, y: -0.010000229}
+      - {x: -0.22910166, y: 0.010000229}
+      - {x: -0.75, y: 0.01}
+      - {x: -0.75, y: -0.01}
+    - - {x: 0.217978, y: 0.010000229}
+      - {x: 0.217978, y: -0.008876324}
+      - {x: 0.75, y: -0.01}
+      - {x: 0.75, y: 0.01}
 --- !u!212 &21287032
 SpriteRenderer:
   m_ObjectHideFlags: 1
