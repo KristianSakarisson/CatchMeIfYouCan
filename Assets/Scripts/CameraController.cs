@@ -16,20 +16,22 @@ public class CameraController : MonoBehaviour
     void Start()
     {
 		currentOrtho = Camera.main.orthographicSize;
-		player = GameObject.Find("player");
         differenceZaxis = new Vector3(0, 0, Camera.main.transform.position.z - player.transform.position.z);
     }
 	
 	void Update ()
     { 
-		float scroll = Input.GetAxis ("Mouse ScrollWheel");
-		if (scroll != 0.0f) {
-			currentOrtho -= scroll * zoom;
-			currentOrtho = Mathf.Clamp (currentOrtho, minOrtho, maxOrtho);
-		}
+		if (player)
+		{
+			float scroll = Input.GetAxis ("Mouse ScrollWheel");
+			if (scroll != 0.0f) {
+				currentOrtho -= scroll * zoom;
+				currentOrtho = Mathf.Clamp (currentOrtho, minOrtho, maxOrtho);
+			}
 
-		ZoomView ();
-		Camera.main.transform.position = player.transform.position + differenceZaxis;
+			ZoomView ();
+			Camera.main.transform.position = player.transform.position + differenceZaxis;
+		}
 	}
 
     public void SetPlayer(GameObject input)

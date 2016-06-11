@@ -64,6 +64,8 @@ public class Initialize : MonoBehaviour
                 if (spawnPosition[0] == i && spawnPosition[1] == j)
                 {
                     GameObject playerSpawned = Instantiate(player, roomVector, Quaternion.identity) as GameObject;
+					playerSpawned.SetActive(true);
+					GetComponent<CameraController>().SetPlayer(playerSpawned);
 
                     playerSpawned.name = "player";
                 }
