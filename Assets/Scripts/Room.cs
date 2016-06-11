@@ -9,6 +9,8 @@ public class Room : MonoBehaviour
 
     private Statistics statistics;
 
+    private Vector3 zAdjust = new Vector3(0f, 0f, 10f);
+
     public int xPos;
     public int yPos;
 
@@ -87,6 +89,7 @@ public class Room : MonoBehaviour
         }
 
         DrawSides();
+        DrawTile();
     }
 
     public void DrawSides()
@@ -104,6 +107,11 @@ public class Room : MonoBehaviour
                 sidePrefabs[i].transform.GetChild(1).gameObject.SetActive(true);
             }
         }
+    }
+
+    public void DrawTile()
+    {
+        Instantiate(statistics.tiles[Random.Range(0, statistics.tiles.Length)], realPosition + zAdjust, Quaternion.identity);
     }
 
     public void SetSide(GameObject input)

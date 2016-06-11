@@ -6,6 +6,8 @@ public class Statistics : MonoBehaviour
     private Room[,] rooms;
     private int mapSize;
 
+    public GameObject[] tiles;
+
     public void SetSize(int size)
     {
         mapSize = size;

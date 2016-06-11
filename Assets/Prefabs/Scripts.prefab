@@ -42,6 +42,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea8d52efa8194a45bc08d35c3cb3d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentOrtho: 0
+  zoom: 1
+  smooth: 1
+  minOrtho: 1
+  maxOrtho: 6
 --- !u!114 &11489760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,6 +58,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d7860e143e08f43aa934f4cd698dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 199350, guid: e1ba55dd2b599ba48a4c13a857fd404b, type: 2}
+  - {fileID: 173274, guid: e2409f38f0318ef4dae9126c2e381edb, type: 2}
+  - {fileID: 182230, guid: 2aaf39756e875eb43ad0284df107e9b2, type: 2}
+  - {fileID: 197336, guid: a641b5e297cac4e4ba5a4dbed460d471, type: 2}
+  - {fileID: 194776, guid: 976457baee23f8940a1367b1e2182ea4, type: 2}
+  - {fileID: 145638, guid: 5cde5ae398392db46b80985ec2a5dabe, type: 2}
+  - {fileID: 191104, guid: 67cfb6ca3ccfb5d4ab0118757f7259d1, type: 2}
+  - {fileID: 113966, guid: f54309377d5b41e4d9a99617955daa2c, type: 2}
+  - {fileID: 168562, guid: 58ef54b2f34287f45ba87d0e02fbd966, type: 2}
+  - {fileID: 137960, guid: 1831108e54fbe6e41ad25773831cd221, type: 2}
+  - {fileID: 124266, guid: d7181d9651c681043b429b325e371b3f, type: 2}
 --- !u!114 &11495098
 MonoBehaviour:
   m_ObjectHideFlags: 1
