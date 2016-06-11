@@ -12,20 +12,27 @@ public class Initialize : MonoBehaviour
     public GameObject door;
     public GameObject wall;
 
-    void Awake ()
+    void Awake()
     {
         statistics = GetComponent<Statistics>();
         statistics.SetSize(mapSize);
-        int[] spawnPosition = new int[] {Random.Range(0, mapSize), Random.Range(0, mapSize) };
+        int[] spawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
         GameObject parent = new GameObject("rooms");
 
         for (int i = 0; i < mapSize; i++)
         {
             for (int j = 0; j < mapSize; j++)
             {
+                //Room newRoom = new Room();
+                //newRoom.GenerateRoom(i, j);
+                //newRoom.door = door;
+                //newRoom.wall = wall;
+                //newRoom.BuildRoom();
+
                 Vector3 roomVector = new Vector3(transform.position.x + i * 1.48f, transform.position.y + j * 1.48f, transform.position.z);
 
-                Room newRoom = GenerateRoom();
+                Room newRoom = new Room();
+                newRoom.GenerateRoom(i, j);
                 GameObject thisRoom = new GameObject("room " + i + ", " + j);
                 thisRoom.transform.parent = parent.transform;
 
@@ -42,6 +49,8 @@ public class Initialize : MonoBehaviour
                         newSide = Instantiate(door, spawnVector, Quaternion.identity) as GameObject;
                     else
                         newSide = Instantiate(wall, spawnVector, Quaternion.identity) as GameObject;
+
+                    newRoom.sidePrefabs[k] = newSide;
 
                     newSide.transform.Rotate(new Vector3(0, 0, spawnRotations[k % spawnRotations.Length]));
                     newSide.transform.parent = thisRoom.transform;
@@ -60,49 +69,5 @@ public class Initialize : MonoBehaviour
                 }
             }
         }
-	}
-
-    private Room GenerateRoom()
-    {
-        Room newRoom = new Room();
-
-        for (int i = 0; i < 4; i++)
-        {
-            if (Random.Range(0, 2) == 0)
-            {
-                newRoom.sides[i] = Room.Side.wall;
-            }
-            else
-            {
-                newRoom.sides[i] = Room.Side.door;
-            }
-        }
-
-        return newRoom;
     }
-}
-
-public class Room
-{
-    public GameObject door;
-    public GameObject wall;
-
-    public int xPos;
-    public int yPos;
-
-    public enum Side
-    {
-        door,
-        wall
-    };
-
-    public enum Type
-    {
-        concrete,
-        wood,
-        tiles
-    };
-
-    public Side[] sides = new Side[4];
-    public Type type;
 }
