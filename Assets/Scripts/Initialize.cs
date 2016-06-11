@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class Initialize : MonoBehaviour
+public class Initialize : NetworkBehaviour
 {
     public int mapSize = 8;
     public GameObject[] roomOutlines;
@@ -9,12 +10,22 @@ public class Initialize : MonoBehaviour
     private int[] rotations = new int[] { 0, 90, 180, 270 };
     private Statistics statistics;
 
+	[SyncVar]
+	private int seed;
+
     public GameObject door;
     public GameObject wall;
 
     void Awake()
     {
-        statistics = GetComponent<Statistics>();
+		if (isServer) {
+			seed = Random.Range (0, 1000000);
+			Debug.Log ("Server seed, " + seed);
+		} else {
+			Debug.Log (seed);
+		}
+		Random.seed = seed;
+		statistics = GetComponent<Statistics>();
         statistics.SetSize(mapSize);
         int[] spawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
         GameObject parent = new GameObject("rooms");
@@ -60,18 +71,21 @@ public class Initialize : MonoBehaviour
                 newRoom.yPos = j;
 
                 statistics.AddRoom(newRoom, i, j);
-
-                if (spawnPosition[0] == i && spawnPosition[1] == j)
-                {
-                    GameObject playerSpawned = Instantiate(player, roomVector, Quaternion.identity) as GameObject;
-					playerSpawned.SetActive(true);
-					GetComponent<CameraController>().SetPlayer(playerSpawned);
-
-					//Comment for us!
-
-                    playerSpawned.name = "player";
-                }
             }
         }
     }
+
+	void Update() {
+
+	}
+
+	public override void OnStartServer() {
+		Debug.LogError ("Server start!");
+	}
+	public override void OnStartClient() {
+		Debug.LogError ("Client start!");
+	}
+	public override void OnStartLocalPlayer() {
+		Debug.LogError ("LocalPlayer start!");
+	}
 }

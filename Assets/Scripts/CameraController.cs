@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
 		currentOrtho = Camera.main.orthographicSize;
-        differenceZaxis = new Vector3(0, 0, Camera.main.transform.position.z - player.transform.position.z);
+        //differenceZaxis = new Vector3(0, 0, Camera.main.transform.position.z - player.transform.position.z);
     }
 	
 	void Update ()
