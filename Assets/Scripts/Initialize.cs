@@ -1,17 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class Initialize : MonoBehaviour
+public class Initialize : NetworkBehaviour
 {
     public int mapSize = 8;
     public GameObject player;
     private Statistics statistics;
 
+<<<<<<< HEAD
     public GameObject side;
+=======
+	[SyncVar]
+	private int seed;
+
+    public GameObject door;
+    public GameObject wall;
+>>>>>>> Network
 
     void Awake()
     {
-        statistics = GetComponent<Statistics>();
+		if (isServer) {
+			seed = Random.Range (0, 1000000);
+			Debug.Log ("Server seed, " + seed);
+		} else {
+			Debug.Log (seed);
+		}
+		Random.seed = seed;
+		statistics = GetComponent<Statistics>();
         statistics.SetSize(mapSize);
         int[] playerSpawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
         GameObject parent = new GameObject("rooms");
@@ -74,6 +90,7 @@ public class Initialize : MonoBehaviour
                 Room bottomNeighbor = thisRoom.GetNeighbors()[2];
                 Room leftNeighbor = thisRoom.GetNeighbors()[3];
 
+<<<<<<< HEAD
                 if (topNeighbor != null)
                     thisRoom.sides[0] = topNeighbor.sides[2];
 
@@ -81,7 +98,24 @@ public class Initialize : MonoBehaviour
                     thisRoom.sides[1] = rightNeighbor.sides[3];
 
                 thisRoom.DrawSides();
+=======
+                statistics.AddRoom(newRoom, i, j);
+>>>>>>> Network
             }
         }
     }
+
+	void Update() {
+
+	}
+
+	public override void OnStartServer() {
+		Debug.LogError ("Server start!");
+	}
+	public override void OnStartClient() {
+		Debug.LogError ("Client start!");
+	}
+	public override void OnStartLocalPlayer() {
+		Debug.LogError ("LocalPlayer start!");
+	}
 }
