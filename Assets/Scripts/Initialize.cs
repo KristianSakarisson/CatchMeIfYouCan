@@ -67,6 +67,8 @@ public class Initialize : MonoBehaviour
 					playerSpawned.SetActive(true);
 					GetComponent<CameraController>().SetPlayer(playerSpawned);
 
+					//Comment for us!
+
                     playerSpawned.name = "player";
                 }
             }
