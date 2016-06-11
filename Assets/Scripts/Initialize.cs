@@ -8,15 +8,10 @@ public class Initialize : NetworkBehaviour
     public GameObject player;
     private Statistics statistics;
 
-<<<<<<< HEAD
     public GameObject side;
-=======
+
 	[SyncVar]
 	private int seed;
-
-    public GameObject door;
-    public GameObject wall;
->>>>>>> Network
 
     void Awake()
     {
@@ -90,7 +85,6 @@ public class Initialize : NetworkBehaviour
                 Room bottomNeighbor = thisRoom.GetNeighbors()[2];
                 Room leftNeighbor = thisRoom.GetNeighbors()[3];
 
-<<<<<<< HEAD
                 if (topNeighbor != null)
                     thisRoom.sides[0] = topNeighbor.sides[2];
 
@@ -98,9 +92,6 @@ public class Initialize : NetworkBehaviour
                     thisRoom.sides[1] = rightNeighbor.sides[3];
 
                 thisRoom.DrawSides();
-=======
-                statistics.AddRoom(newRoom, i, j);
->>>>>>> Network
             }
         }
     }

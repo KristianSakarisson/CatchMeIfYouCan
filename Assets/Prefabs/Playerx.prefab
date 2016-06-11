@@ -400,6 +400,10 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2053872}
+    - target: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 183872}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 158308}
