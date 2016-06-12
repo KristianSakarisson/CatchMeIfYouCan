@@ -1,30 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
-public class Initialize : NetworkBehaviour
+public class Initialize : MonoBehaviour
 {
+    
     public int mapSize = 8;
     public GameObject player;
     private Statistics statistics;
 
     public GameObject side;
 
-	[SyncVar]
-	private int seed;
-
     void Awake()
     {
-		if (isServer) {
-			seed = Random.Range (0, 1000000);
-			Debug.Log ("Server seed, " + seed);
-		} else {
-			Debug.Log (seed);
-		}
-		Random.seed = seed;
+        Application.runInBackground = true;
+    }
+
+	public void Init()
+    {
 		statistics = GetComponent<Statistics>();
         statistics.SetSize(mapSize);
-        int[] playerSpawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
+        //int[] playerSpawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
         GameObject parent = new GameObject("rooms");
 
         for (int i = 0; i < mapSize; i++)
@@ -43,12 +38,8 @@ public class Initialize : NetworkBehaviour
 
                 statistics.AddRoom(room, i, j);
 
-                if (playerSpawnPosition[0] == i && playerSpawnPosition[1] == j)
-                {
-                    GameObject playerSpawned = Instantiate(player, room.GetPosition(), Quaternion.identity) as GameObject;
-
-                    playerSpawned.name = "player";
-                }
+                if (statistics.playerType == Statistics.PlayerType.hider)
+                    room.darkTile.SetActive(false);
             }
         }
 
@@ -139,6 +130,7 @@ public class Initialize : NetworkBehaviour
                 }
             }
         }
+        RemoveSideDoors();
         ConnectDoors();
         DrawAllRooms();
     }
@@ -163,17 +155,18 @@ public class Initialize : NetworkBehaviour
         }
     }
 
-	void Update() {
+    void RemoveSideDoors()
+    {
+        int[] sideIndices = new int[2] { 1, 3 };
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                Room thisRoom = statistics.GetRoom(x, y);
 
-	}
-
-	public override void OnStartServer() {
-		Debug.Log ("Server start!");
-	}
-	public override void OnStartClient() {
-		Debug.Log ("Client start!");
-	}
-	public override void OnStartLocalPlayer() {
-		Debug.Log ("LocalPlayer start!");
-	}
+                if (Random.value > .5f)
+                    thisRoom.sides[sideIndices[Random.Range(1, 2)]] = Room.Side.wall;
+            }
+        }
+    }
 }
