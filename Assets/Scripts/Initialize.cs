@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
 public class Initialize : MonoBehaviour
 {
@@ -10,17 +9,8 @@ public class Initialize : MonoBehaviour
 
     public GameObject side;
 
-	private int seed;
-
-    void Awake()
+	public void Init()
     {
-		//if (isServer) {
-			seed = Random.Range (0, 1000000);
-			Debug.Log ("Server seed, " + seed);
-		//} else {
-			//Debug.Log (seed);
-		//}
-		Random.seed = seed;
 		statistics = GetComponent<Statistics>();
         statistics.SetSize(mapSize);
         int[] playerSpawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
@@ -155,18 +145,4 @@ public class Initialize : MonoBehaviour
             }
         }
     }
-
-	void Update() {
-
-	}
-
-	/*public override void OnStartServer() {
-		Debug.Log ("Server start!");
-	}
-	public override void OnStartClient() {
-		Debug.Log ("Client start!");
-	}
-	public override void OnStartLocalPlayer() {
-		Debug.Log ("LocalPlayer start!");
-	}*/
 }
