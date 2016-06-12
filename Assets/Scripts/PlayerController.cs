@@ -6,7 +6,7 @@ public class PlayerController : NetworkBehaviour
 {
     public float moveConstant;
 
-	void FixedUpdate() 
+    void FixedUpdate() 
 	{
 		if (!isLocalPlayer) {
 			return;

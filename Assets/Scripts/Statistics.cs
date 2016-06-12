@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
-public class Statistics : MonoBehaviour
+public class Statistics : NetworkBehaviour
 {
     private Room[,] rooms;
     private int mapSize;
@@ -16,6 +17,9 @@ public class Statistics : MonoBehaviour
 	public ArrayList visitedTiles = new ArrayList();
 
     public GameObject darkRoom;
+
+    [SyncVar]
+    public int seed;
 
     public void SetSize(int size)
     {
