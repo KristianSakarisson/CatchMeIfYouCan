@@ -5,6 +5,9 @@ public class Statistics : MonoBehaviour
 {
     private Room[,] rooms;
     private int mapSize;
+    private Room playerRoom;
+
+    public GameObject player;
 
     public GameObject[] tiles;
 
@@ -27,5 +30,15 @@ public class Statistics : MonoBehaviour
     public int GetSize()
     {
         return mapSize;
+    }
+
+    public void SetPlayerRoom(Room input)
+    {
+        playerRoom = input;
+    }
+
+    public Room GetPlayerRoom()
+    {
+        return playerRoom;
     }
 }
