@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Initialize : NetworkBehaviour
+public class Initialize : MonoBehaviour
 {
     public int mapSize = 8;
     public GameObject player;
@@ -10,17 +10,16 @@ public class Initialize : NetworkBehaviour
 
     public GameObject side;
 
-	[SyncVar]
 	private int seed;
 
     void Awake()
     {
-		if (isServer) {
+		//if (isServer) {
 			seed = Random.Range (0, 1000000);
 			Debug.Log ("Server seed, " + seed);
-		} else {
-			Debug.Log (seed);
-		}
+		//} else {
+			//Debug.Log (seed);
+		//}
 		Random.seed = seed;
 		statistics = GetComponent<Statistics>();
         statistics.SetSize(mapSize);
@@ -161,7 +160,7 @@ public class Initialize : NetworkBehaviour
 
 	}
 
-	public override void OnStartServer() {
+	/*public override void OnStartServer() {
 		Debug.Log ("Server start!");
 	}
 	public override void OnStartClient() {
@@ -169,5 +168,5 @@ public class Initialize : NetworkBehaviour
 	}
 	public override void OnStartLocalPlayer() {
 		Debug.Log ("LocalPlayer start!");
-	}
+	}*/
 }

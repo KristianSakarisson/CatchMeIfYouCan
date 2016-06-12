@@ -3,9 +3,11 @@ using System.Collections;
 
 public class NetworkManager : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
-	
+		//GameObject.Find ("Scripts").SetActive (true);
 	}
 	
 	// Update is called once per frame

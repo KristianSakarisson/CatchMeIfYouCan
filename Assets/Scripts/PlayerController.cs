@@ -9,10 +9,8 @@ public class PlayerController : NetworkBehaviour
 	void FixedUpdate() 
 	{
 		if (!isLocalPlayer) {
-			Debug.Log("PC not local");
 			return;
 		}
-		Debug.Log("PC is local");
         float verticalMove = Input.GetAxis("Vertical") * moveConstant;
         float horizontalMove = Input.GetAxis("Horizontal") * moveConstant;
 
