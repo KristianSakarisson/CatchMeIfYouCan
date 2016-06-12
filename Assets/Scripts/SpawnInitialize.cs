@@ -15,7 +15,6 @@ public class SpawnInitialize : NetworkBehaviour {
     {
         yield return new WaitForSeconds(time);
 
-        Debug.Log("Hello!");
 
         statistics = GameObject.Find("Scripts").GetComponent<Statistics>();
 
@@ -41,7 +40,6 @@ public class SpawnInitialize : NetworkBehaviour {
 	}
 	void Start () 
 	{
-		Debug.LogError ("Starting");
         if (!isLocalPlayer)
         {
             return;
@@ -51,7 +49,6 @@ public class SpawnInitialize : NetworkBehaviour {
 
 		statistics.playerType = Statistics.PlayerType.seeker;
 
-		Debug.LogError("Seeker");
 
 		/*if (GameObject.FindWithTag ("Hider") != null) 
 		{
@@ -68,7 +65,6 @@ public class SpawnInitialize : NetworkBehaviour {
 			statistics.playerType = Statistics.PlayerType.hider;
 
 			gameObject.GetComponent<PlayerController>().isHider = true;
-			Debug.LogError("Hider");
         }
 
         StartCoroutine(WaitBeforeInitialize(.05f));

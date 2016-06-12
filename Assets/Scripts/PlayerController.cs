@@ -8,6 +8,10 @@ public class PlayerController : NetworkBehaviour
     public float moveConstant;
 	public Animator animator;
 
+	//The uhhh, the bit you know the bit
+	public float health = 100;
+	public int negativeStamina = 5;
+
 	//Array of seekers, used by hider for checking distance.
 	public bool isHider = false;
 	public ArrayList seekers = new ArrayList ();
@@ -40,7 +44,7 @@ public class PlayerController : NetworkBehaviour
 			transform.rotation = Quaternion.FromToRotation (Vector2.right, new Vector2 (horizontalMove, verticalMove));
 
 			if (!source.isPlaying) {
-				moveConstant = 2f;
+				//moveConstant = 2f;
 				walk();
 			}
 
@@ -49,7 +53,7 @@ public class PlayerController : NetworkBehaviour
 				source.Stop ();
 			}
 			if (Input.GetKey (KeyCode.Space)) {
-				moveConstant = 3f;
+				//moveConstant = 3f;
 				if (source.isPlaying)
 					return;
 				run();
@@ -66,7 +70,16 @@ public class PlayerController : NetworkBehaviour
 		if (isHider) {
 			if(statistics.seekers.Count > 1)
 			{
-				Debug.Log ("Closest dist is: " + GetClosestSeeker(statistics.seekers));
+				//Debug.Log ("Closest dist is: " + GetClosestSeeker(statistics.seekers));
+
+				if(GetClosestSeeker(statistics.seekers) < 0.4)
+				{
+					health -= Time.deltaTime * negativeStamina;
+					if(moveConstant >= 0)
+					{
+						moveConstant -= Time.deltaTime;
+					}
+				}
 			}
 		}
     }
@@ -74,13 +87,11 @@ public class PlayerController : NetworkBehaviour
 	//Finds nearest seeker.
 	float GetClosestSeeker(List<Transform> enemies)
 	{
-		Transform tMin = null;
 		float minDist = Mathf.Infinity;
 		Vector3 currentPos = transform.position;
 		foreach (Transform t in enemies) {
 			float dist = Vector3.Distance (t.position, currentPos);
 			if (dist < minDist && dist != 0) {
-				tMin = t;
 				minDist = dist;
 			}
 		}
