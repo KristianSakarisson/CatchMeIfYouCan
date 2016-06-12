@@ -27,8 +27,21 @@ public class SpawnInitialize : NetworkBehaviour {
         myCamera.GetComponent<CameraController>().player = gameObject;
     }
 
+	IEnumerator PlayerCheckInterval(float time)
+	{
+		yield return new WaitForSeconds (time);
+
+		foreach (GameObject pl in GameObject.FindGameObjectsWithTag("Player")) 
+		{
+			if(!statistics.seekers.Contains(pl.transform))
+				statistics.seekers.Add (pl.transform);
+		}
+
+		StartCoroutine (PlayerCheckInterval (time));
+	}
 	void Start () 
 	{
+		Debug.LogError ("Starting");
         if (!isLocalPlayer)
         {
             return;
@@ -36,16 +49,31 @@ public class SpawnInitialize : NetworkBehaviour {
 
         statistics = GameObject.Find("Scripts").GetComponent<Statistics>();
 
-        statistics.playerType = Statistics.PlayerType.seeker;
+		statistics.playerType = Statistics.PlayerType.seeker;
+
+		Debug.LogError("Seeker");
+
+		/*if (GameObject.FindWithTag ("Hider") != null) 
+		{
+			GameObject.FindWithTag("Hider").GetComponent<PlayerController>().seekers.Add (transform);
+		}*/
+		foreach(GameObject pl in GameObject.FindGameObjectsWithTag("Player"))
+			statistics.seekers.Add (pl.transform);
+		//statistics.GetComponent<Statistics> ().seekers.Add (transform);
 
         if (isServer)
         {
             seed = 2;
             statistics.seed = seed;
-            statistics.playerType = Statistics.PlayerType.hider;
+			statistics.playerType = Statistics.PlayerType.hider;
+
+			gameObject.GetComponent<PlayerController>().isHider = true;
+			Debug.LogError("Hider");
         }
 
         StartCoroutine(WaitBeforeInitialize(.05f));
+		StartCoroutine (PlayerCheckInterval (1f));
+
 	}
 
     float time = 0f;

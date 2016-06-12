@@ -26,9 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.940487, y: -0.47706044, z: 0}
+  m_LocalPosition: {x: -1.94048703, y: -.477060437, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIWall: {fileID: 180218, guid: acce8931477317e4e95dde113c6c3ad5, type: 2}
+  UILight: {fileID: 136988, guid: 90fa14960d10bff4b9d02e1eb4b6fab8, type: 2}
   playerType: 1
   player: {fileID: 0}
   tiles:
@@ -111,6 +111,7 @@ MonoBehaviour:
   visitedLimit: 5
   visitedRooms: []
   darkRoom: {fileID: 161360, guid: 872466e707f3b054594224a33f6643b5, type: 2}
+  seekers: []
   seed: 0
 --- !u!114 &11495098
 MonoBehaviour:
@@ -137,6 +138,14 @@ Prefab:
       propertyPath: darkRoom
       value: 
       objectReference: {fileID: 161360, guid: 872466e707f3b054594224a33f6643b5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: UILight
+      value: 
+      objectReference: {fileID: 136988, guid: 90fa14960d10bff4b9d02e1eb4b6fab8, type: 2}
+    - target: {fileID: 0}
+      propertyPath: UIWall
+      value: 
+      objectReference: {fileID: 180218, guid: acce8931477317e4e95dde113c6c3ad5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145722}

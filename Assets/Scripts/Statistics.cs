@@ -16,6 +16,7 @@ public class Statistics : NetworkBehaviour
     private Room playerRoom;
 
     public GameObject UIWall;
+    public GameObject UILight;
 
     public PlayerType playerType = PlayerType.seeker;
 
@@ -28,7 +29,25 @@ public class Statistics : NetworkBehaviour
 
     public GameObject darkRoom;
 
+
+	public List<Transform> seekers = new List<Transform> ();
+
+    private bool pathHasChanged = false;
+
     public int seed;
+
+    public bool Path()
+    {
+        return pathHasChanged;
+    }
+
+    public bool Path(bool input)
+    {
+        pathHasChanged = input;
+
+        return pathHasChanged;
+    }
+
 
     void Start()
     {
@@ -84,5 +103,8 @@ public class Statistics : NetworkBehaviour
 
             visitedRooms[i].darkTile.SetActive(false);
         }
+
+        pathHasChanged = true;
+        //Camera.main.GetComponent<CameraController>().LightPath();
 	}
 }
