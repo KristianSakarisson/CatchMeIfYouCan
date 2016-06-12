@@ -126,13 +126,14 @@ public class CameraController : MonoBehaviour
 
         foreach(Transform seeker in statistics.seekers)
         {
+            Color drawColor = Color.black;
             if (seeker == statistics.player.transform)
-                continue;
+                drawColor = Color.green;
             int[] coords;
 
             coords = TranslateWorldCoordsToMinimapCoords(seeker.position);
 
-            minimapTiles[coords[0], coords[1]].GetComponent<SpriteRenderer>().color = Color.black;
+            minimapTiles[coords[0], coords[1]].GetComponent<SpriteRenderer>().color = drawColor;
         }
     }
 
