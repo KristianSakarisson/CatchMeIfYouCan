@@ -170,6 +170,10 @@ Prefab:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 11442682, guid: 230372c9e9e34ae4285fea7c88e19ce5, type: 2}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 187922, guid: a5d7f8963b8ca734f8481f9fc9a89bec, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 230372c9e9e34ae4285fea7c88e19ce5, type: 2}
   m_IsPrefabParent: 0

@@ -130,7 +130,7 @@ public class Room : MonoBehaviour
         newTile.transform.parent = transform;
 
         darkTile.GetComponent<SpriteRenderer>().color -= new Color(0, 0, 0, .05f); // Set slight transparancy on dark tile
-        darkTile.SetActive(false);
+        //darkTile.SetActive(false);
     }
 
     public void SetSide(GameObject input)
@@ -148,7 +148,7 @@ public class Room : MonoBehaviour
         if(other.gameObject == statistics.player)
         {
             statistics.SetPlayerRoom(GetComponent<Room>());
-            //darkTile.SetActive(false);
+            darkTile.SetActive(false);
         }
     }
 
@@ -156,7 +156,7 @@ public class Room : MonoBehaviour
     {
         if (other.gameObject == statistics.player)
         {
-            //darkTile.SetActive(true);
+            darkTile.SetActive(true);
         }
     }
 }

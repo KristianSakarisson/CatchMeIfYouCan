@@ -2,15 +2,17 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public float moveConstant;
 
 	void FixedUpdate() 
 	{
-		if (transform.parent.GetComponent<NetworkIdentity>().isLocalPlayer == false) {
+		if (!isLocalPlayer) {
+			Debug.Log("PC not local");
 			return;
 		}
+		Debug.Log("PC is local");
         float verticalMove = Input.GetAxis("Vertical") * moveConstant;
         float horizontalMove = Input.GetAxis("Horizontal") * moveConstant;
 

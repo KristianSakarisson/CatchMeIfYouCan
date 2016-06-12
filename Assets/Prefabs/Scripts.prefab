@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5986b85bb75501649b2f21d9310c71e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   tiles:
   - {fileID: 199350, guid: e1ba55dd2b599ba48a4c13a857fd404b, type: 2}
   - {fileID: 173274, guid: e2409f38f0318ef4dae9126c2e381edb, type: 2}
@@ -104,6 +105,7 @@ MonoBehaviour:
   - {fileID: 168562, guid: 58ef54b2f34287f45ba87d0e02fbd966, type: 2}
   - {fileID: 137960, guid: 1831108e54fbe6e41ad25773831cd221, type: 2}
   - {fileID: 124266, guid: d7181d9651c681043b429b325e371b3f, type: 2}
+  darkRoom: {fileID: 161360, guid: 872466e707f3b054594224a33f6643b5, type: 2}
 --- !u!114 &11495098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +126,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: darkRoom
+      value: 
+      objectReference: {fileID: 161360, guid: 872466e707f3b054594224a33f6643b5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145722}
