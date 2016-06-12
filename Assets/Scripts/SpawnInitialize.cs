@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System.Collections.Generic;
 
 public class SpawnInitialize : NetworkBehaviour {
 
@@ -32,11 +33,15 @@ public class SpawnInitialize : NetworkBehaviour {
 
 		foreach (GameObject pl in GameObject.FindGameObjectsWithTag("Player")) 
 		{
-			if(!statistics.seekers.Contains(pl.transform))
+            statistics.seekers.Clear();
+            if (!statistics.seekers.Contains(pl.transform))
 				statistics.seekers.Add (pl.transform);
 
             if (pl != statistics.player)
                 pl.transform.position = new Vector3(pl.transform.position.x, pl.transform.position.y, 0f);
+
+            //if (pl == null)
+            //    statistics.seekers.Clear();
 		}
 
 		StartCoroutine (PlayerCheckInterval (time));

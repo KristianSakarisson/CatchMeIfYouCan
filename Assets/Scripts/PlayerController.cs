@@ -112,7 +112,7 @@ public class PlayerController : NetworkBehaviour
 		}
 
 		if (isHider) {
-			if(statistics.seekers.Count > 1)
+			if(statistics.seekers.Count > 0)
 			{
 				//Debug.Log ("Closest dist is: " + GetClosestSeeker(statistics.seekers));
 
