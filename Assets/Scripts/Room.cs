@@ -8,6 +8,7 @@ public class Room : MonoBehaviour
     private Vector3 realPosition; // Actual transform.position of the object
 
     private Statistics statistics; // Reference to the statistics object
+	private PlayerController player;  
 
     private Vector3 zAdjust = new Vector3(0f, 0f, 10f); // Adjustment for tiles to make sure that they are behind the player
 
@@ -149,6 +150,7 @@ public class Room : MonoBehaviour
         {
             statistics.SetPlayerRoom(GetComponent<Room>());
             statistics.AddToVisted(GetComponent<Room>());
+
             darkTile.SetActive(false);
         }
     }
@@ -157,6 +159,7 @@ public class Room : MonoBehaviour
     {
         if (other.gameObject == statistics.player)
         {
+			
 			//statistics.AddToVisted (GetComponent<Room>());
         }
     }
