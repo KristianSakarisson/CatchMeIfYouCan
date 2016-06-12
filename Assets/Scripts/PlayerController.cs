@@ -8,9 +8,10 @@ public class PlayerController : NetworkBehaviour
 	public Animator animator;
 
 	public AudioClip walking, running, doorOpen, doorClose;
-
 	private AudioSource source;
 
+	private float stanimaRegenTime = 10;
+	private float time = 0;
 
 	void Start ()
 	{
@@ -23,6 +24,11 @@ public class PlayerController : NetworkBehaviour
 		if (!isLocalPlayer) {
 			return;
 		}
+
+		time += Time.deltaTime;
+
+		Debug.Log (time);
+
         float verticalMove = Input.GetAxis("Vertical") * moveConstant;
         float horizontalMove = Input.GetAxis("Horizontal") * moveConstant;
 
@@ -40,7 +46,7 @@ public class PlayerController : NetworkBehaviour
 				Debug.Log("Source name: " + source.name);
 				source.Stop ();
 			}
-			if (Input.GetKey (KeyCode.Space)) {
+			if (Input.GetKey (KeyCode.Space) && time >= stanimaRegenTime) {
 				moveConstant = 3f;
 				if (source.isPlaying)
 					return;
