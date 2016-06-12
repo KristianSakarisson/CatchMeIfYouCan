@@ -11,7 +11,7 @@ public class Room : MonoBehaviour
 
     private Vector3 zAdjust = new Vector3(0f, 0f, 10f); // Adjustment for tiles to make sure that they are behind the player
 
-    private GameObject darkTile;
+    public GameObject darkTile;
 
     // Room coordinates in relation to other rooms
     public int xPos; 
@@ -156,7 +156,7 @@ public class Room : MonoBehaviour
     {
         if (other.gameObject == statistics.player)
         {
-            darkTile.SetActive(true);
+			statistics.AddToVisted (GetComponent<Room>());
         }
     }
 }

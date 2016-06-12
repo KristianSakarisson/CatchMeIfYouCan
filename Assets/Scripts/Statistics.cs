@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Statistics : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Statistics : MonoBehaviour
     public GameObject player;
 
     public GameObject[] tiles;
+
+	public int visitedLimit = 5;
+	public ArrayList visitedTiles = new ArrayList();
+
     public GameObject darkRoom;
 
     public void SetSize(int size)
@@ -42,4 +47,22 @@ public class Statistics : MonoBehaviour
     {
         return playerRoom;
     }
+
+	public void AddToVisted(Room tile)
+	{
+
+		if (visitedTiles.Count >= visitedLimit) {
+
+			Room what = (Room)visitedTiles [0];
+			Debug.Log ("Removing index: " + visitedTiles.IndexOf (what));
+
+			what.darkTile.SetActive(true);
+			if(!GetPlayerRoom() == what)
+				visitedTiles.RemoveAt (0);
+
+		}
+
+		visitedTiles.Add (tile);
+		Debug.Log (visitedTiles.Count);
+	}
 }
