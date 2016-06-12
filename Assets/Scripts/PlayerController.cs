@@ -17,7 +17,10 @@ public class PlayerController : NetworkBehaviour
 
 	System.DateTime initGame;
 
-	private double stanimaRegenTime = 15;
+	public int baseMovementSpeed 	= 2;
+	public int sprintMovementSpeed 	= 3;
+
+	public double stanimaRegenTime 	= 15;
 	private bool time = false;
 
 	void Start ()
@@ -52,7 +55,7 @@ public class PlayerController : NetworkBehaviour
 			transform.rotation = Quaternion.FromToRotation (Vector2.right, new Vector2 (horizontalMove, verticalMove));
 
 			if (!source.isPlaying) {
-				moveConstant = 2f;
+				moveConstant = baseMovementSpeed;
 				walk();
 			}
 
@@ -60,7 +63,7 @@ public class PlayerController : NetworkBehaviour
 			if (Input.GetKey (KeyCode.Space) && time == true) {
 				source.Stop ();
 				time = false;
-				moveConstant = 3f;
+				moveConstant = sprintMovementSpeed;
 				run();
 			}
 
