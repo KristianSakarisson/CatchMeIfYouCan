@@ -41,12 +41,20 @@ public class PlayerController : NetworkBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, -0.305f);
 	}
 
+    float timeSinceDimensionJump = 10f;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (!isLocalPlayer)
+            return;
+
+        timeSinceDimensionJump += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.R) && timeSinceDimensionJump > 10f)
         {
             GameObject.Find("rooms").SetActive(false);
             GameObject.Find("Scripts").GetComponent<Initialize>().Init();
+            timeSinceDimensionJump = 0f;
         }
     }
 
