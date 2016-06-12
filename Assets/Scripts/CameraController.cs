@@ -40,6 +40,12 @@ public class CameraController : MonoBehaviour
 
 			ZoomView ();
 			cam.transform.position = player.transform.position + Vector3.back;
+
+            if (statistics.playerType == Statistics.PlayerType.hider)
+            {
+                LightPath();
+                DrawEnemies();
+            }
         }
 
         if (statistics.Path())
@@ -85,6 +91,34 @@ public class CameraController : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private int[] TranslateWorldCoordsToMinimapCoords(Vector3 input)
+    {
+        int[] result = new int[2];
+
+        result[0] = (int) (Mathf.Floor((input.x + .75f) / 1.5f));
+        result[1] = (int) (Mathf.Floor((input.y + .75f) / 1.5f));
+
+        return result;
+    }
+
+    public void DrawEnemies()
+    {
+        Color white = new Color(1f, 1f, 1f);
+
+        Color minusAlpha = new Color(0f, 0f, 0f, .15f);
+
+        foreach(Transform seeker in statistics.seekers)
+        {
+            if (seeker == statistics.player.transform)
+                continue;
+            int[] coords;
+
+            coords = TranslateWorldCoordsToMinimapCoords(seeker.position);
+
+            minimapTiles[coords[0], coords[1]].GetComponent<SpriteRenderer>().color = Color.black;
         }
     }
 
