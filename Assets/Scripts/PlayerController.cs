@@ -7,9 +7,15 @@ public class PlayerController : NetworkBehaviour
     public float moveConstant;
 	public Animator animator;
 
+	public AudioClip walking, running, doorOpen, doorClose;
+
+	private AudioSource source;
+
+
 	void Start ()
 	{
 		animator = gameObject.GetComponent<Animator> ();
+		source = GetComponent<AudioSource> ();
 	}
 
     void FixedUpdate() 
@@ -24,11 +30,45 @@ public class PlayerController : NetworkBehaviour
 
         if (verticalMove + horizontalMove > 0f || verticalMove + horizontalMove < 0f) {
 			transform.rotation = Quaternion.FromToRotation (Vector2.right, new Vector2 (horizontalMove, verticalMove));
+
+			if (!source.isPlaying) {
+				moveConstant = 2f;
+				walk();
+			}
+
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				Debug.Log("Source name: " + source.name);
+				source.Stop ();
+			}
+			if (Input.GetKey (KeyCode.Space)) {
+				moveConstant = 3f;
+				if (source.isPlaying)
+					return;
+				run();
+			}
+
 			animator.SetBool ("isWalking", true);
 		} 
 		else 
 		{
+			source.Stop ();
 			animator.SetBool("isWalking", false);
 		}
     }
+	public void walk()
+	{
+		source.PlayOneShot (walking, 1F);
+	}
+	public void run()
+	{
+		source.PlayOneShot (running, 1F);
+	}
+	public void openDoor()
+	{
+		source.PlayOneShot (doorOpen, 0.7F);
+	}
+	public void closeDoor()
+	{
+		source.PlayOneShot (doorOpen, 0.7F);
+	}
 }
