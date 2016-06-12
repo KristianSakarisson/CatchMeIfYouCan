@@ -130,6 +130,7 @@ public class Initialize : MonoBehaviour
                 }
             }
         }
+        RemoveSideDoors();
         ConnectDoors();
         DrawAllRooms();
     }
@@ -150,6 +151,21 @@ public class Initialize : MonoBehaviour
 
                 if (rightNeighbor != null)
                     thisRoom.sides[1] = rightNeighbor.sides[3];
+            }
+        }
+    }
+
+    void RemoveSideDoors()
+    {
+        int[] sideIndices = new int[2] { 1, 3 };
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                Room thisRoom = statistics.GetRoom(x, y);
+
+                if (Random.value > .5f)
+                    thisRoom.sides[sideIndices[Random.Range(1, 2)]] = Room.Side.wall;
             }
         }
     }

@@ -12,6 +12,10 @@ public class PlayerController : NetworkBehaviour
 	public bool isHider = false;
 	public ArrayList seekers = new ArrayList ();
 	public Statistics statistics;
+	public AudioClip walking, running, doorOpen, doorClose;
+
+	private AudioSource source;
+
 
 	void Start ()
 	{
@@ -19,6 +23,7 @@ public class PlayerController : NetworkBehaviour
 		statistics = GameObject.Find("Scripts").GetComponent<Statistics>();
 
 		Debug.Log ("seekers: " + seekers.Count);
+		source = GetComponent<AudioSource> ();
 	}
 
     void FixedUpdate() 
@@ -33,10 +38,28 @@ public class PlayerController : NetworkBehaviour
 
         if (verticalMove + horizontalMove > 0f || verticalMove + horizontalMove < 0f) {
 			transform.rotation = Quaternion.FromToRotation (Vector2.right, new Vector2 (horizontalMove, verticalMove));
+
+			if (!source.isPlaying) {
+				moveConstant = 2f;
+				walk();
+			}
+
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				Debug.Log("Source name: " + source.name);
+				source.Stop ();
+			}
+			if (Input.GetKey (KeyCode.Space)) {
+				moveConstant = 3f;
+				if (source.isPlaying)
+					return;
+				run();
+			}
+
 			animator.SetBool ("isWalking", true);
 		} 
 		else 
 		{
+			source.Stop ();
 			animator.SetBool("isWalking", false);
 		}
 
@@ -54,15 +77,30 @@ public class PlayerController : NetworkBehaviour
 		Transform tMin = null;
 		float minDist = Mathf.Infinity;
 		Vector3 currentPos = transform.position;
-		foreach (Transform t in enemies)
-		{
-			float dist = Vector3.Distance(t.position, currentPos);
-			if (dist < minDist && dist != 0)
-			{
+		foreach (Transform t in enemies) {
+			float dist = Vector3.Distance (t.position, currentPos);
+			if (dist < minDist && dist != 0) {
 				tMin = t;
 				minDist = dist;
 			}
 		}
 		return minDist;
+	}
+
+	public void walk()
+	{
+		source.PlayOneShot (walking, 1F);
+	}
+	public void run()
+	{
+		source.PlayOneShot (running, 1F);
+	}
+	public void openDoor()
+	{
+		source.PlayOneShot (doorOpen, 0.7F);
+	}
+	public void closeDoor()
+	{
+		source.PlayOneShot (doorOpen, 0.7F);
 	}
 }
