@@ -43,12 +43,6 @@ public class Initialize : NetworkBehaviour
 
                 statistics.AddRoom(room, i, j);
 
-                if (playerSpawnPosition[0] == i && playerSpawnPosition[1] == j)
-                {
-                    GameObject playerSpawned = Instantiate(player, room.GetPosition(), Quaternion.identity) as GameObject;
-
-                    playerSpawned.name = "player";
-                }
             }
         }
 

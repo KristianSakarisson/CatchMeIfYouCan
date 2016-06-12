@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate() 
 	{
+		if (transform.parent.GetComponent<NetworkIdentity>().isLocalPlayer == false) {
+			return;
+		}
         float verticalMove = Input.GetAxis("Vertical") * moveConstant;
         float horizontalMove = Input.GetAxis("Horizontal") * moveConstant;
 
