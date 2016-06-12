@@ -3,11 +3,17 @@ using System.Collections;
 
 public class Initialize : MonoBehaviour
 {
+    
     public int mapSize = 8;
     public GameObject player;
     private Statistics statistics;
 
     public GameObject side;
+
+    void Awake()
+    {
+        Application.runInBackground = true;
+    }
 
 	public void Init()
     {
@@ -32,6 +38,8 @@ public class Initialize : MonoBehaviour
 
                 statistics.AddRoom(room, i, j);
 
+                if (statistics.playerType == Statistics.PlayerType.hider)
+                    room.darkTile.SetActive(false);
             }
         }
 

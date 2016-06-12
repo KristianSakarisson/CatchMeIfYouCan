@@ -145,7 +145,7 @@ public class Room : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject == statistics.player)
+        if(other.gameObject == statistics.player && statistics.playerType == Statistics.PlayerType.seeker)
         {
             statistics.SetPlayerRoom(GetComponent<Room>());
             statistics.AddToVisted(GetComponent<Room>());

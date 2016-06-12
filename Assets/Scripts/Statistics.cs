@@ -5,9 +5,17 @@ using UnityEngine.Networking;
 
 public class Statistics : NetworkBehaviour
 {
+    public enum PlayerType
+    {
+        hider,
+        seeker
+    }
+
     private Room[,] rooms;
     private int mapSize;
     private Room playerRoom;
+
+    public PlayerType playerType = PlayerType.seeker;
 
     public GameObject player;
 
@@ -18,12 +26,12 @@ public class Statistics : NetworkBehaviour
 
     public GameObject darkRoom;
 
-    [SyncVar]
     public int seed;
 
     void Start()
     {
         visitedRooms = new Room[visitedLimit];
+        //Random.seed = seed;
     }
 
     public void SetSize(int size)
