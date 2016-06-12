@@ -41,7 +41,6 @@ public class SpawnInitialize : NetworkBehaviour {
 	}
 	void Start () 
 	{
-		Debug.LogError ("Starting");
         if (!isLocalPlayer)
         {
             return;

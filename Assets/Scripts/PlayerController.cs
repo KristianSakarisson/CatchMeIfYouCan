@@ -15,11 +15,14 @@ public class PlayerController : NetworkBehaviour
 	public AudioClip walking, running, doorOpen, doorClose;
 	private AudioSource source;
 
-	private float stanimaRegenTime = 10;
-	private float time = 0;
+	System.DateTime initGame;
+
+	private double stanimaRegenTime = 10;
+	private bool time = false;
 
 	void Start ()
 	{
+		initGame = new System.DateTime();
 		animator = gameObject.GetComponent<Animator> ();
 		statistics = GameObject.Find("Scripts").GetComponent<Statistics>();
 
@@ -33,9 +36,12 @@ public class PlayerController : NetworkBehaviour
 			return;
 		}
 
-		time += Time.deltaTime;
-
-		Debug.Log (time);
+		System.DateTime timeNow = System.DateTime.Now;
+		double second = (timeNow - initGame).TotalSeconds;
+		if(second > stanimaRegenTime) {
+			time = true;
+			initGame = System.DateTime.Now;
+		}
 
         float verticalMove = Input.GetAxis("Vertical") * moveConstant;
         float horizontalMove = Input.GetAxis("Horizontal") * moveConstant;
@@ -50,14 +56,11 @@ public class PlayerController : NetworkBehaviour
 				walk();
 			}
 
-			if (Input.GetKeyDown (KeyCode.Space)) {
-				Debug.Log("Source name: " + source.name);
+
+			if (Input.GetKey (KeyCode.Space) && time == true) {
 				source.Stop ();
-			}
-			if (Input.GetKey (KeyCode.Space) && time >= stanimaRegenTime) {
+				time = false;
 				moveConstant = 3f;
-				if (source.isPlaying)
-					return;
 				run();
 			}
 
