@@ -116,7 +116,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0f4ae34e947f34c3c9224eb6c5ad11cb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -190,7 +190,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a08beaf26c4e54c1e8a8e4d9cbfb9e4f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.02
+  m_Volume: 0.425
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -335,10 +335,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveConstant: 2
   animator: {fileID: 0}
+  health: 100
+  negativeStamina: 5
+  isHider: 0
+  statistics: {fileID: 0}
   walking: {fileID: 8300000, guid: f7f7916cbcf50491f850bbcf970fe10f, type: 3}
   running: {fileID: 8300000, guid: b2d383c8b45a94d458f4e9d688338d7f, type: 3}
-  doorOpen: {fileID: 8300000, guid: 09bf77d9eb0124c12b8eb28653a533d9, type: 3}
-  doorClose: {fileID: 8300000, guid: abd7a6a8322a34190a29c3fa82d2f11c, type: 3}
+  baseMovementSpeed: 2
+  sprintMovementSpeed: 3
+  stanimaRegenTime: 15
 --- !u!114 &11466244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +411,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .425000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
