@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIWall: {fileID: 180218, guid: acce8931477317e4e95dde113c6c3ad5, type: 2}
+  UILight: {fileID: 136988, guid: 90fa14960d10bff4b9d02e1eb4b6fab8, type: 2}
   playerType: 1
   player: {fileID: 0}
   tiles:

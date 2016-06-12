@@ -130,6 +130,8 @@ public class Room : MonoBehaviour
         newTile.transform.parent = transform;
 
         darkTile.GetComponent<SpriteRenderer>().color -= new Color(0, 0, 0, .05f); // Set slight transparancy on dark tile
+
+        darkTile.transform.position += new Vector3(0f, 0f, -darkTile.transform.position.z);
         //darkTile.SetActive(false);
     }
 
