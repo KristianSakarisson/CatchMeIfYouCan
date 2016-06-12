@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
 
 	public float currentOrtho; // Value of most current Camera.main.orthographicSize
 
+    private Statistics statistics;
+
 	public float zoom	 	= 1; // Zoom speed
 	public float smooth 	= 1.0f; // Smoothness of zooming
 	public float minOrtho 	= 1.0f; // Minimum of zoom
@@ -18,6 +20,10 @@ public class CameraController : MonoBehaviour
     void Start()
     {
 		currentOrtho = cam.orthographicSize;
+
+        statistics = GameObject.Find("Scripts").GetComponent<Statistics>();
+
+        DrawMinimap();
 
         //differenceZaxis = new Vector3(0, 0, Camera.main.transform.position.z - player.transform.position.z);
     }
@@ -46,5 +52,28 @@ public class CameraController : MonoBehaviour
 	{
 		cam.orthographicSize = Mathf.Lerp (cam.orthographicSize, currentOrtho, smooth * Time.deltaTime);
 	}
-		
+
+    public void DrawMinimap()
+    {
+        Vector3 offsetVector = new Vector3(.04f, .04f, 0f);
+        for (int x = 0; x < statistics.GetSize(); x++)
+        {
+            for (int y = 0; y < statistics.GetSize(); y++)
+            {
+                Room UIRoom = statistics.GetRoom(x, y);
+                Vector3 actualOffset = new Vector3(x * offsetVector.x, y * offsetVector.y, 0f);
+                for (int i = 0; i < UIRoom.sides.Length; i++)
+                {
+                    if (UIRoom.sides[i] == Room.Side.wall)
+                    {
+                        GameObject newObject = Instantiate(statistics.UIWall, transform.position + actualOffset + Vector3.forward, Quaternion.identity) as GameObject;
+
+                        newObject.transform.parent = transform;
+
+                        newObject.transform.Rotate(new Vector3(0f, 0f, 90f * -i));
+                    }
+                }
+            }
+        }
+    }	
 }

@@ -15,6 +15,8 @@ public class Statistics : NetworkBehaviour
     private int mapSize;
     private Room playerRoom;
 
+    public GameObject UIWall;
+
     public PlayerType playerType = PlayerType.seeker;
 
     public GameObject player;
