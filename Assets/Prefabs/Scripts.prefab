@@ -26,8 +26,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.94048703, y: -.477060437, z: 0}
+  m_LocalPosition: {x: -1.940487, y: -0.47706044, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,6 +109,28 @@ MonoBehaviour:
   - {fileID: 168562, guid: 58ef54b2f34287f45ba87d0e02fbd966, type: 2}
   - {fileID: 137960, guid: 1831108e54fbe6e41ad25773831cd221, type: 2}
   - {fileID: 124266, guid: d7181d9651c681043b429b325e371b3f, type: 2}
+  props:
+  - {fileID: 186472, guid: f1ab81aa6f24af842a708eb4e7c25e8a, type: 2}
+  - {fileID: 149884, guid: 4b4859bf04b39aa48bbd32137ebca55e, type: 2}
+  - {fileID: 155092, guid: 8fa82ddd5f0d3134cbb85d17281e58b7, type: 2}
+  - {fileID: 181040, guid: 986feafd4c4075c42b5ccf077a437b64, type: 2}
+  - {fileID: 172230, guid: efef100df8fb1c9458f6a79d871c40af, type: 2}
+  - {fileID: 148822, guid: 3f0782eca4ec25247920443bed5906dd, type: 2}
+  - {fileID: 197522, guid: 4cdc1a726e8a1ea4ab35ccc1d8b1e6f9, type: 2}
+  - {fileID: 154220, guid: f8ed1f46f1b8e244f995606e48a7fa2d, type: 2}
+  - {fileID: 194132, guid: 89e89246ee69eae49bb3796f13ecf0e8, type: 2}
+  - {fileID: 141776, guid: 360ae9f7390d0624884fdb112cb1d551, type: 2}
+  - {fileID: 185532, guid: b6e35fff73d33d44d889c627a39f1ec8, type: 2}
+  - {fileID: 140572, guid: b53244f78688d7a478080cac82013a44, type: 2}
+  - {fileID: 130336, guid: e05c0839f207151419b648e78f59e56e, type: 2}
+  - {fileID: 110138, guid: 3c4f36d51d529be4cb8335f65b846b67, type: 2}
+  - {fileID: 112654, guid: bce2c2824c0ec554d9538f718a9b72c1, type: 2}
+  - {fileID: 131958, guid: fc1645b4302a80542be9acd5785c50b5, type: 2}
+  - {fileID: 163056, guid: 882ef6ff1dc396241bf75490c7589d1d, type: 2}
+  - {fileID: 198364, guid: 35f3cadf4dcb4dd42b5dc356a995edaa, type: 2}
+  - {fileID: 106796, guid: 161de22be701e4c4daf09fbb26efd5e9, type: 2}
+  - {fileID: 137772, guid: 814c00564d035d841802b1325ff9b77b, type: 2}
+  - {fileID: 120332, guid: 789942b2214cd0342a3aafb8f93fef68, type: 2}
   visitedLimit: 5
   visitedRooms: []
   darkRoom: {fileID: 161360, guid: 872466e707f3b054594224a33f6643b5, type: 2}

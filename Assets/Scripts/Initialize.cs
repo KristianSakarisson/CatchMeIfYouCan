@@ -128,6 +128,8 @@ public class Initialize : MonoBehaviour
                 {
                     thisRoom.sides[0] = Room.Side.wall;
                 }
+
+                thisRoom.DrawProps();
             }
         }
         RemoveSideDoors();

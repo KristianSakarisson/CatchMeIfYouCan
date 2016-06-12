@@ -24,7 +24,18 @@ public class PlayerController : NetworkBehaviour
 
 		Debug.Log ("seekers: " + seekers.Count);
 		source = GetComponent<AudioSource> ();
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, -0.305f);
 	}
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameObject.Find("rooms").SetActive(false);
+            GameObject.Find("Scripts").GetComponent<Initialize>().Init();
+        }
+    }
 
     void FixedUpdate() 
 	{

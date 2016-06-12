@@ -35,6 +35,9 @@ public class SpawnInitialize : NetworkBehaviour {
 		{
 			if(!statistics.seekers.Contains(pl.transform))
 				statistics.seekers.Add (pl.transform);
+
+            if (pl != statistics.player)
+                pl.transform.position = new Vector3(pl.transform.position.x, pl.transform.position.y, 0f);
 		}
 
 		StartCoroutine (PlayerCheckInterval (time));

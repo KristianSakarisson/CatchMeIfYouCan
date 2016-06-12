@@ -24,8 +24,22 @@ public class CameraController : MonoBehaviour
         statistics = GameObject.Find("Scripts").GetComponent<Statistics>();
 
         DrawMinimap();
+        StartCoroutine(DrawMinimapInterval(1f));
 
         //differenceZaxis = new Vector3(0, 0, Camera.main.transform.position.z - player.transform.position.z);
+    }
+
+    IEnumerator DrawMinimapInterval(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        Destroy(transform.GetChild(0).gameObject);
+        DrawMinimap();
+        LightPath();
+        if (statistics.playerType == Statistics.PlayerType.hider)
+            DrawEnemies();
+
+        StartCoroutine(DrawMinimapInterval(time));
     }
 	
 	void Update ()

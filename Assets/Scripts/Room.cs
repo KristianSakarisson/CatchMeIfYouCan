@@ -136,6 +136,23 @@ public class Room : MonoBehaviour
         //darkTile.SetActive(false);
     }
 
+    public void DrawProps()
+    {
+        int numberOfProps = Random.Range(1, 4);
+
+        for (int i = 0; i < numberOfProps; i++)
+        {
+            Vector3 offset = Random.insideUnitCircle / 2;
+            GameObject thisProp = Instantiate(statistics.props[Random.Range(0, statistics.props.Length)], realPosition + offset, Quaternion.identity) as GameObject;
+
+            thisProp.transform.Rotate(new Vector3(0f, 0f, Random.Range(0, 360)));
+
+            thisProp.transform.parent = transform;
+
+            thisProp.transform.position += new Vector3(0f, 0f, -thisProp.transform.position.z + 0.1f);
+        }
+    }
+
     public void SetSide(GameObject input)
     {
         side = input;

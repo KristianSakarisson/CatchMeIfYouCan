@@ -23,6 +23,7 @@ public class Statistics : NetworkBehaviour
     public GameObject player;
 
     public GameObject[] tiles;
+    public GameObject[] props;
 
 	public int visitedLimit = 5;
     public Room[] visitedRooms;
