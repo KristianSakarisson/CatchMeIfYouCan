@@ -16,7 +16,7 @@ public class PlayerController : NetworkBehaviour
 	public bool isHider = false;
 	public ArrayList seekers = new ArrayList ();
 	public Statistics statistics;
-	public AudioClip walking, running, doorOpen, doorClose;
+	public AudioClip walking, running;
 	private AudioSource source;
 
 	System.DateTime initGame;
@@ -126,13 +126,5 @@ public class PlayerController : NetworkBehaviour
 	public void run()
 	{
 		source.PlayOneShot (running, 1F);
-	}
-	public void openDoor()
-	{
-		source.PlayOneShot (doorOpen, 0.7F);
-	}
-	public void closeDoor()
-	{
-		source.PlayOneShot (doorOpen, 0.7F);
 	}
 }
