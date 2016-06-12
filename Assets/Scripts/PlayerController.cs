@@ -5,11 +5,13 @@ using System.Collections.Generic;
 
 public class PlayerController : NetworkBehaviour
 {
+	public Transform winScreen;	
+
     public float moveConstant;
 	public Animator animator;
 
 	//The uhhh, the bit you know the bit
-	public float health = 100;
+	public bool hasWon = false;
 	public int negativeStamina = 5;
 
 	//Array of seekers, used by hider for checking distance.
@@ -58,8 +60,10 @@ public class PlayerController : NetworkBehaviour
 			moveConstant = 0;
 		}
 
-		if (moveConstant == 0) {
+		if (moveConstant == 0 && hasWon == false) {
 			Debug.Log("GameOver");
+			Instantiate(winScreen, transform.position, winScreen.rotation);
+			hasWon = true;
 		}
 
 		System.DateTime timeNow = System.DateTime.Now;
@@ -106,10 +110,10 @@ public class PlayerController : NetworkBehaviour
 
 				if(GetClosestSeeker(statistics.seekers) < 0.4)
 				{
-					health -= Time.deltaTime * negativeStamina;
+					//health -= Time.deltaTime * negativeStamina;
 					if(moveConstant >= 0)
 					{
-						moveConstant -= Time.deltaTime;
+						moveConstant -= Time.deltaTime * negativeStamina;
 					}
 				}
 			}
