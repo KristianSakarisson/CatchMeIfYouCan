@@ -17,7 +17,7 @@ public class PlayerController : NetworkBehaviour
 
 	System.DateTime initGame;
 
-	private double stanimaRegenTime = 10;
+	private double stanimaRegenTime = 15;
 	private bool time = false;
 
 	void Start ()
