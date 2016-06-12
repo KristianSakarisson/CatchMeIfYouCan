@@ -14,12 +14,17 @@ public class Statistics : NetworkBehaviour
     public GameObject[] tiles;
 
 	public int visitedLimit = 5;
-	public ArrayList visitedTiles = new ArrayList();
+    public Room[] visitedRooms;
 
     public GameObject darkRoom;
 
     [SyncVar]
     public int seed;
+
+    void Start()
+    {
+        visitedRooms = new Room[visitedLimit];
+    }
 
     public void SetSize(int size)
     {
@@ -54,19 +59,20 @@ public class Statistics : NetworkBehaviour
 
 	public void AddToVisted(Room tile)
 	{
+        for (int i = visitedRooms.Length - 1; i > 0; i--)
+        {
+            if (visitedRooms[visitedRooms.Length - 1] != null)
+                visitedRooms[visitedRooms.Length - 1].darkTile.SetActive(true);
+            visitedRooms[i] = visitedRooms[i - 1];
+        }
+        visitedRooms[0] = tile;
 
-		if (visitedTiles.Count >= visitedLimit) {
+        for (int i = 0; i < visitedRooms.Length; i++)
+        {
+            if (visitedRooms[i] == null)
+                break;
 
-			Room what = (Room)visitedTiles [0];
-			Debug.Log ("Removing index: " + visitedTiles.IndexOf (what));
-
-			what.darkTile.SetActive(true);
-			if(!GetPlayerRoom() == what)
-				visitedTiles.RemoveAt (0);
-
-		}
-
-		visitedTiles.Add (tile);
-		Debug.Log (visitedTiles.Count);
+            visitedRooms[i].darkTile.SetActive(false);
+        }
 	}
 }

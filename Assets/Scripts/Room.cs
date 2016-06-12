@@ -148,6 +148,7 @@ public class Room : MonoBehaviour
         if(other.gameObject == statistics.player)
         {
             statistics.SetPlayerRoom(GetComponent<Room>());
+            statistics.AddToVisted(GetComponent<Room>());
             darkTile.SetActive(false);
         }
     }
@@ -156,7 +157,7 @@ public class Room : MonoBehaviour
     {
         if (other.gameObject == statistics.player)
         {
-			statistics.AddToVisted (GetComponent<Room>());
+			//statistics.AddToVisted (GetComponent<Room>());
         }
     }
 }
