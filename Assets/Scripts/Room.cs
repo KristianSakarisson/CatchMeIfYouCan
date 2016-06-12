@@ -11,6 +11,8 @@ public class Room : MonoBehaviour
 
     private Vector3 zAdjust = new Vector3(0f, 0f, 10f); // Adjustment for tiles to make sure that they are behind the player
 
+    private GameObject darkTile;
+
     // Room coordinates in relation to other rooms
     public int xPos; 
     public int yPos;
@@ -122,8 +124,13 @@ public class Room : MonoBehaviour
     public void DrawTile() // Draw a random tile at room location
     {
         GameObject newTile = Instantiate(statistics.tiles[Random.Range(0, statistics.tiles.Length)], realPosition + zAdjust, Quaternion.identity) as GameObject;
+        darkTile = Instantiate(statistics.darkRoom, realPosition + Vector3.back / 2, Quaternion.identity) as GameObject;
 
-        newTile.transform.parent = transform; // Set tile parent to room object
+        darkTile.transform.parent = transform;// Set tile parents to room object
+        newTile.transform.parent = transform;
+
+        darkTile.GetComponent<SpriteRenderer>().color -= new Color(0, 0, 0, .05f); // Set slight transparancy on dark tile
+        darkTile.SetActive(false);
     }
 
     public void SetSide(GameObject input)
@@ -141,6 +148,15 @@ public class Room : MonoBehaviour
         if(other.gameObject == statistics.player)
         {
             statistics.SetPlayerRoom(GetComponent<Room>());
+            //darkTile.SetActive(false);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject == statistics.player)
+        {
+            //darkTile.SetActive(true);
         }
     }
 }

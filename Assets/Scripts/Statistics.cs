@@ -10,6 +10,7 @@ public class Statistics : MonoBehaviour
     public GameObject player;
 
     public GameObject[] tiles;
+    public GameObject darkRoom;
 
     public void SetSize(int size)
     {
