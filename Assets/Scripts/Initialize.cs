@@ -19,7 +19,7 @@ public class Initialize : MonoBehaviour
     {
 		statistics = GetComponent<Statistics>();
         statistics.SetSize(mapSize);
-        int[] playerSpawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
+        //int[] playerSpawnPosition = new int[] { Random.Range(0, mapSize), Random.Range(0, mapSize) };
         GameObject parent = new GameObject("rooms");
 
         for (int i = 0; i < mapSize; i++)

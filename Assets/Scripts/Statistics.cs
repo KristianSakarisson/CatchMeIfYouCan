@@ -26,8 +26,10 @@ public class Statistics : NetworkBehaviour
 
     public GameObject darkRoom;
 
-    public int seed;
+	public int seed;
 
+	public List<Transform> seekers = new List<Transform> ();
+	
     void Start()
     {
         visitedRooms = new Room[visitedLimit];
