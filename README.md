@@ -12,8 +12,8 @@ Controls: To move, just use any standard move input (e.g. WASD, arrows, controll
 
 If you for some reason want to try this broken game, you can download the binaries here: 
 
-Windows: https://www.dropbox.com/s/j491tyiqpfbh0lz/CatchMeIfYouCan.zip
+Windows: https://www.dropbox.com/sh/f9hhvtcw8tyozhv/AABLW9dhM1_oiVWc76sRjH8ba
 
-Mac: https://www.dropbox.com/s/kqb8ah4ut8upx9m/CatchMeIfYouCan.zip
+Mac OS X: https://www.dropbox.com/sh/vi0psdarv4funi9/AADuLNOcbBc6yvmfLdHyXVUga
 
-Linux: https://www.dropbox.com/s/kqb8ah4ut8upx9m/CatchMeIfYouCan.zip
+Linux: https://www.dropbox.com/sh/3stfo4rb6pe3pxm/AABXthumVVNoFrRo2dGGFGZKa
