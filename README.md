@@ -1,4 +1,4 @@
-# CatchMeIfYouCan
+# Catch Me If You Can - An FT Gamejam Entry
 
 A simple game created in 48 hours during a gamejam in Føroya Tele. 
 
